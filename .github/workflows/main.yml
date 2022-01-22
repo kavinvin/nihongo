@@ -1,11 +1,9 @@
 name: Haskell CI
-
 on:
   push:
     branches: [ master ]
   pull_request:
     branches: [ master ]
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -27,8 +25,7 @@ jobs:
           ${{ runner.os }}-build-${{ env.cache-name }}-
           ${{ runner.os }}-build-
           ${{ runner.os }}-
-
     - name: Build
       run: stack build --only-dependencies --test --bench
     - name: Test
-      run: stack test
+      run: stack test --coverage
